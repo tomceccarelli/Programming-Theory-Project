@@ -8,21 +8,28 @@ public class UIHandler : MonoBehaviour
     [SerializeField]
     private Toggle[] animalToggles = new Toggle[2];
 
+    private Animal selectedAnimal;
+
     [SerializeField]
     private Text infoText;
 
+    [SerializeField]
+    private Button talkButton;
+
     public void ToggleAnimal(Toggle toggle)
     {
-        Animal pet = GetAnimalInfo(toggle);
-
         if (toggle.isOn)
         {
             DisableActiveToggle(toggle);
-            DisplayAnimalInfo(pet);
+
+            selectedAnimal = GetAnimalInfo(toggle);
+            DisplayAnimalInfo();
         }
         else
         {
-            infoText.text = "";
+            selectedAnimal = null;
+            talkButton.gameObject.SetActive(false);
+            infoText.text = "Select a pet";
         }
     }
 
@@ -52,9 +59,15 @@ public class UIHandler : MonoBehaviour
         }
     }
 
-    private void DisplayAnimalInfo(Animal animal)
+    private void DisplayAnimalInfo()
     {
-        StartCoroutine(animal.Talk(3));
-        infoText.text = animal.DisplayInfo() + "\n It's name is " + animal.petName;
+        selectedAnimal.Talk();
+        talkButton.gameObject.SetActive(true);
+        infoText.text = selectedAnimal.DisplayInfo() + "\n It's name is " + selectedAnimal.petName;
+    }
+
+    public void StartTalking()
+    {
+        StartCoroutine(selectedAnimal.Talk(3));
     }
 }
