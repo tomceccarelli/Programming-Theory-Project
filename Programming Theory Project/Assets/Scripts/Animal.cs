@@ -13,7 +13,7 @@ public abstract class Animal : MonoBehaviour
         }
         protected set
         {
-            if (value.Length > 5)
+            if (value.Length > 10)
             {
                 Debug.LogError("Your pet name is too long");
             }
@@ -43,6 +43,11 @@ public abstract class Animal : MonoBehaviour
             }
             isTalking = false;
         }
+    }
+
+    protected string SetName(string name)
+    {
+        return name;
     }
 
     public abstract string DisplayInfo();

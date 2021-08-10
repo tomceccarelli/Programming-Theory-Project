@@ -7,7 +7,7 @@ public class Cat : Animal
 
     private void Start()
     {
-        petName = "Félix";
+        petName = SetName(MainManager.Instance.catName);
         voice = GetComponent<AudioSource>();
     }
 
