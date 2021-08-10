@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Animal : MonoBehaviour
 {
+    // ENCAPSULATION
     private string m_petName = "";
     public string petName
     {
@@ -23,14 +24,19 @@ public abstract class Animal : MonoBehaviour
             }
         }
     }
+
+    // ENCAPSULATION
     protected AudioSource voice { get; set; }
+
+    // ENCAPSULATION
     protected bool isTalking { get; set; }
 
+    // POLYMORPHISM
     public void Talk()
     {
         voice.Play();
     }
-
+    // POLYMORPHISM
     public IEnumerator Talk(int times)
     {
         if (!isTalking)
@@ -50,6 +56,7 @@ public abstract class Animal : MonoBehaviour
         return name;
     }
 
+    // POLYMORPHISM
     public abstract string DisplayInfo();
 
 }

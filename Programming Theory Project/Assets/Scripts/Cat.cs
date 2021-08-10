@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// INHERITANCE
 public class Cat : Animal
 {
 
@@ -11,7 +12,7 @@ public class Cat : Animal
         voice = GetComponent<AudioSource>();
     }
 
-
+    // POLYMORPHISM
     public override string DisplayInfo()
     {
         return "This is a cat.";

@@ -20,8 +20,10 @@ public class UIHandler : MonoBehaviour
     {
         if (toggle.isOn)
         {
+            // ABSTRACTION
             DisableActiveToggle(toggle);
 
+            // ABSTRACTION
             selectedAnimal = GetAnimalInfo(toggle);
             DisplayAnimalInfo();
         }
